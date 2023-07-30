@@ -7,11 +7,13 @@ import {generateToken} from "../../../utils/generateToken.js"
 export const signIn=asyncHandler( async(req,res,next)=>{
 
    
-        const{userName,email,password,phone}=req.body
+        const{userName,email,password,cPassword,phone}=req.body
     console.log({userName,email,password,phone})
+if(password!=cPassword){
+    return next(new Error('password not match cPassword'))
+}
     const checkUser=await userModel.findOne({email})
     if(checkUser){
-        // return res.json({message:"email exist"})
         return next(new Error('email exist'))
     }
     const hashPassword=hash({
@@ -45,4 +47,4 @@ const token=generateToken({
     await user.save()
 return res.json({message:"done",user})
    
-})
+}) 

@@ -1,9 +1,11 @@
-import {Router} from 'express'
+import {Router} from 'express';
+import {auth} from "../../../middleWare/auth.middleware.js"
+
 import * as userControl from  './controller/user.js'
 const router = Router();
-router.get("/profile",userControl.profileUser)
-router.patch("/",auth,userControl.updateUser)
-router.delete("/",auth,userControl.deleteUser)
+router.get("/profile",auth,userControl.profileUser)
+router.patch("/",userControl.updateUser)
+router.delete("/",userControl.deleteUser)
 
 
 export default  router

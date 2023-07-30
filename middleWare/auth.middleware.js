@@ -1,7 +1,7 @@
 import userModel from "../DB/model/User.model.js";
 import { asyncHandler } from "../src/utils/errorHandling.js";
 
-const auth=asyncHandler( async (req,res,next)=>{
+export const auth=asyncHandler( async (req,res,next)=>{
   
     const{authorization}=req.headers
     console.log({authorization});

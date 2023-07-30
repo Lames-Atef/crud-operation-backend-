@@ -10,12 +10,6 @@ export const getMessage=asyncHandler(
     }
 )
 
-
-
-
-
-
-
 export const addMessage=asyncHandler(
     async (req,res,next)=>{
         const{userId}=req.params
